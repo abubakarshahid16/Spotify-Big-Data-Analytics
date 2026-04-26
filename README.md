@@ -1,38 +1,92 @@
+# Spotify Big Data Analytics
 
-<h1>Audio Feature Extraction and Music Recommendation System</h1>
+A music analytics and recommendation project built around large-scale audio feature extraction, metadata integration, MongoDB storage, and Spark-based similarity search. The repository combines signal-processing ideas with big-data tooling to support music recommendation workflows.
 
----
-<h2>Overview</h2>
-This project involves the extraction of Mel-Frequency Cepstral Coefficients (MFCC) features from a collection of audio files, combined with metadata from a tracks dataset, and the storage of these features in a MongoDB database. Additionally, a music recommendation system utilizing these features is implemented using Apache Spark.
+## Overview
 
-<h2>Methodology</h2>
+This project focuses on building a pipeline that:
 
-<h3>Audio Feature Extraction</h3>
+- extracts audio features from music files
+- combines them with track metadata
+- stores the processed representations in MongoDB
+- uses Apache Spark for large-scale recommendation logic
 
-The script first loads metadata from a tracks.csv file into a pandas DataFrame.
-It iterates through audio files in a specified directory (fma_medium), extracting features such as MFCC, spectral centroid, zero-crossing rate, and duration using the librosa library.
-Features are extracted and stored in a MongoDB collection (music.features), along with track IDs and file paths.
+The overall goal is to move from raw audio and metadata to a system that can identify similar tracks through feature-based search.
 
-<h3>Data Preprocessing</h4>
+## Project Components
 
-- Audio features such as MFCC are padded to ensure uniform length across different tracks.
-- Extracted features are stored in a structured DataFrame in MongoDB, facilitating easy retrieval and analysis.
-<h3>Implementation of Music Recommendation System</h4>
+### Audio Feature Extraction
 
-- The project utilizes Apache Spark to build and implement a music recommendation system.
-- Feature vectors extracted from the audio files are converted into Spark DataFrames.
-- Dimensionality reduction techniques like PCA (Principal Component Analysis) are applied to reduce feature dimensionality while preserving essential information.
-- Approximate Nearest Neighbors (ANN) search using BucketedRandomProjectionLSH is employed to find similar tracks based on their feature vectors.
-  
-<h2>Results and Evaluation</h2>
-Effectiveness of MFCC Features: MFCC features provide a compact representation of audio that captures essential aspects for music recommendation.
-Dimensionality Reduction: PCA effectively reduces the dimensionality of feature vectors, facilitating faster processing and model training.
-Music Recommendation Performance: The recommendation system efficiently identifies similar tracks based on extracted audio features.
-<h2>Conclusion</h2>
-This project demonstrates a comprehensive pipeline for audio feature extraction, storage in a NoSQL database (MongoDB), and implementation of a music recommendation system using Apache Spark. The use of MFCC and dimensionality reduction techniques enhances the effectiveness and efficiency of the system, providing a basis for further optimization and enhancement.
+The project extracts features such as:
 
-<h2>Authors</h2>
+- MFCCs
+- spectral centroid
+- zero-crossing rate
+- track duration
 
-- Abubakar shahid 22i-1883
-- Faizan Ali 22i-2011
-- Muhammad 22i-4372
+These features provide a compact representation of each audio file for downstream similarity analysis.
+
+### Data Storage
+
+Extracted features and metadata are stored in a MongoDB collection so they can be queried, reused, and processed efficiently.
+
+### Recommendation Engine
+
+The recommendation system uses Spark to:
+
+- build feature vectors
+- apply dimensionality reduction with PCA
+- run approximate nearest-neighbor search
+- surface similar tracks based on audio characteristics
+
+## Visual Proof
+
+### Interface / Output Preview
+
+![Spotify analytics preview](Screenshot%20from%202024-05-04%2016-35-07.png)
+
+## Repository Contents
+
+- `phase1_extract_features.ipynb`: feature extraction notebook
+- `MusicRecommendation.py`: recommendation logic
+- `app.py`: lightweight application entry point
+- `index.html`, `style.css`, `script.js`: front-end interface files
+- `Screenshot from 2024-05-04 16-35-07.png`: project preview image
+
+## Tech Stack
+
+- Python
+- librosa
+- MongoDB
+- Apache Spark
+- PCA / ANN-style similarity search
+- HTML, CSS, JavaScript
+
+## Why This Project Matters
+
+This repository is a strong portfolio project because it demonstrates:
+
+- audio feature engineering
+- integration of signal processing with metadata pipelines
+- NoSQL data storage
+- large-scale recommendation thinking
+- crossover between machine learning and big-data tooling
+
+## Running the Project
+
+The exact local setup depends on your MongoDB and Spark environment, but the typical flow is:
+
+1. prepare the audio dataset and metadata
+2. run the extraction notebook
+3. store feature outputs in MongoDB
+4. launch the recommendation logic
+5. open the front-end files if using the browser-based interface
+
+## Current Repository Status
+
+This project is best understood as a preserved academic / portfolio pipeline rather than a polished production deployment. Its value is in the pipeline design, feature extraction workflow, and recommendation methodology.
+
+## Author
+
+Abubakar Shahid  
+GitHub: <https://github.com/abubakarshahid16>
