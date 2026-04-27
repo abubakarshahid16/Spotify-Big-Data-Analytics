@@ -1,21 +1,34 @@
 # Spotify Big Data Analytics
 
-A music analytics and recommendation project built around large-scale audio feature extraction, metadata integration, MongoDB storage, and Spark-based similarity search. The repository combines signal-processing ideas with big-data tooling to support music recommendation workflows.
+A music analytics and recommendation project built around large-scale audio feature extraction, metadata integration, MongoDB storage, and Spark-based similarity search.
 
-## Overview
+This repository is best understood as a **music recommendation pipeline** that combines signal processing with big-data tooling.
 
-This project focuses on building a pipeline that:
+## Problem this project solves
+
+Music recommendation becomes harder when the dataset grows and when metadata alone is not enough to capture similarity. A stronger system needs to:
+
+- extract useful audio features
+- combine audio characteristics with metadata
+- store processed representations efficiently
+- search for similar tracks at scale
+
+This project explores that workflow using Spotify-style music analytics and recommendation logic.
+
+## What this project does
+
+The pipeline:
 
 - extracts audio features from music files
 - combines them with track metadata
-- stores the processed representations in MongoDB
-- uses Apache Spark for large-scale recommendation logic
+- stores processed results in MongoDB
+- uses Apache Spark for large-scale similarity logic
 
-The overall goal is to move from raw audio and metadata to a system that can identify similar tracks through feature-based search.
+The goal is to move from raw files and metadata to a system that can identify related tracks through feature-based search.
 
-## Project Components
+## Core components
 
-### Audio Feature Extraction
+### Audio feature extraction
 
 The project extracts features such as:
 
@@ -24,69 +37,62 @@ The project extracts features such as:
 - zero-crossing rate
 - track duration
 
-These features provide a compact representation of each audio file for downstream similarity analysis.
+### Data storage
 
-### Data Storage
+Extracted features and metadata are stored in MongoDB so they can be queried and reused efficiently.
 
-Extracted features and metadata are stored in a MongoDB collection so they can be queried, reused, and processed efficiently.
+### Recommendation engine
 
-### Recommendation Engine
-
-The recommendation system uses Spark to:
+The recommendation workflow uses Spark to:
 
 - build feature vectors
 - apply dimensionality reduction with PCA
-- run approximate nearest-neighbor search
-- surface similar tracks based on audio characteristics
+- run nearest-neighbor style similarity search
+- surface musically similar tracks
 
-## Visual Proof
-
-### Interface / Output Preview
+## Visual proof
 
 ![Spotify analytics preview](Screenshot%20from%202024-05-04%2016-35-07.png)
 
-## Repository Contents
+## Repository contents
 
 - `phase1_extract_features.ipynb`: feature extraction notebook
 - `MusicRecommendation.py`: recommendation logic
-- `app.py`: lightweight application entry point
-- `index.html`, `style.css`, `script.js`: front-end interface files
-- `Screenshot from 2024-05-04 16-35-07.png`: project preview image
+- `app.py`: application entry point
+- `index.html`, `style.css`, `script.js`: front-end files
 
-## Tech Stack
+## Tech stack
 
 - Python
 - librosa
 - MongoDB
 - Apache Spark
-- PCA / ANN-style similarity search
+- PCA and similarity search
 - HTML, CSS, JavaScript
 
-## Why This Project Matters
+## Why this project matters
 
-This repository is a strong portfolio project because it demonstrates:
+- It demonstrates audio feature engineering.
+- It shows how data engineering and recommendation logic connect.
+- It combines ML-style feature work with big-data infrastructure.
+- It is useful for portfolio positioning in recommendation systems, analytics, and data pipelines.
 
-- audio feature engineering
-- integration of signal processing with metadata pipelines
-- NoSQL data storage
-- large-scale recommendation thinking
-- crossover between machine learning and big-data tooling
-
-## Running the Project
-
-The exact local setup depends on your MongoDB and Spark environment, but the typical flow is:
+## Typical local flow
 
 1. prepare the audio dataset and metadata
 2. run the extraction notebook
 3. store feature outputs in MongoDB
-4. launch the recommendation logic
-5. open the front-end files if using the browser-based interface
+4. launch the recommendation workflow
+5. open the front-end interface if needed
 
-## Current Repository Status
+## Industrial positioning
 
-This project is best understood as a preserved academic / portfolio pipeline rather than a polished production deployment. Its value is in the pipeline design, feature extraction workflow, and recommendation methodology.
+A more production-ready music recommendation pipeline would also need:
 
-## Author
+- scheduled ingestion of new content
+- stronger metadata normalization
+- evaluation metrics for recommendation quality
+- online serving infrastructure
+- latency and scale testing
 
-Abubakar Shahid  
-GitHub: <https://github.com/abubakarshahid16>
+This makes the repo best positioned as a **big-data music analytics and recommendation prototype**.
