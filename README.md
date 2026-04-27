@@ -52,7 +52,7 @@ The recommendation workflow uses Spark to:
 
 ## Visual proof
 
-![Spotify analytics preview](Screenshot%20from%202024-05-04%2016-35-07.png)
+![Spotify analytics preview](docs/screenshots/Screenshot%20from%202024-05-04%2016-35-07.png)
 
 ## Repository contents
 
@@ -60,6 +60,7 @@ The recommendation workflow uses Spark to:
 - `MusicRecommendation.py`: recommendation logic
 - `app.py`: application entry point
 - `index.html`, `style.css`, `script.js`: front-end files
+- `docs/screenshots/`: preview and supporting visual assets
 
 ## Tech stack
 
@@ -96,3 +97,7 @@ A more production-ready music recommendation pipeline would also need:
 - latency and scale testing
 
 This makes the repo best positioned as a **big-data music analytics and recommendation prototype**.
+
+## Current structure improvement
+
+Screenshot assets have been moved into `docs/screenshots/` so the repository root stays focused on code and notebook artifacts.
